@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class RecusionPath {
+
+	public static void main(String[] args) {
+		System.out.println(getBoardPath(0, 10));
+		
+
+	}
+	
+	public static ArrayList<String> getBoardPath(int curr , int end){
+		if(curr==end) {
+			ArrayList<String> base = new ArrayList<>();
+			base.add(" ");
+			return base;
+		}
+		if(curr>end) {
+			ArrayList<String> base = new ArrayList<>();
+			return base;
+			}
+		
+		ArrayList<String> mr = new ArrayList<>();
+		for(int dice = 1 ;dice<=6;dice++) {
+			ArrayList<String> rr = getBoardPath(curr+dice,end);
+			for(String rrs : rr) {
+				mr.add(dice+rrs);
+			}
+		}
+		return mr;
+	}
+
+}
